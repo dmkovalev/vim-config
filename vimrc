@@ -26,6 +26,12 @@ Plugin 'scrooloose/syntastic'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tomasr/molokai'
+Plugin 'mileszs/ack.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'tfnico/vim-gradle'
+Plugin 'airblade/vim-rooter.git'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -127,6 +133,11 @@ nnoremap k gk
 nnoremap ; :
 au FocusLost * :wa
 "------enabled solarized theme---------"
+if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
+      set t_Co=256
+endif
+
+
 " set t_Co=16
 syntax enable
 " set background=dark
@@ -173,7 +184,7 @@ let g:syntastic_check_on_wq = 0
 nnoremap <leader>sc :SyntasticCheck<CR>
 nnoremap <leader>si :SyntasticInfo<CR>
 nnoremap <leader>sr :SyntasticReset<CR>
-
+nnoremap <leader>d :NERDTreeToggle<CR>
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 " let g:UltiSnipsJumpBackwardTrigger="<c-z>"
@@ -186,3 +197,4 @@ set wildignore+=*/build/**
 let g:ctrlp_use_caching=0
 let g:molokai_original=1
 let g:rehash256 = 1
+map <F4> :w<CR> :compiler gradle<CR> :make test<CR>:cw 4<CR>
