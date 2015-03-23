@@ -25,6 +25,7 @@ Plugin 'sjl/gundo.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tomasr/molokai'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -126,10 +127,10 @@ nnoremap k gk
 nnoremap ; :
 au FocusLost * :wa
 "------enabled solarized theme---------"
-set t_Co=16
+" set t_Co=16
 syntax enable
-set background=dark
-colorscheme solarized
+" set background=dark
+colorscheme molokai
 
 let g:EclimCompletionMethod = 'omnifunc'
 let g:airline#extensions#tabline#enabled = 1
@@ -155,6 +156,9 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
 nnoremap <F5> :GundoToggle<CR>
+nnoremap <leader>cp :colorscheme peachpuff<CR>
+nnoremap <leader>cl :colorscheme koehler<CR>
+nnoremap <leader>cm :colorscheme molokai<CR>
 
 let g:rainbow_active = 1
 set statusline+=%#warningmsg#
@@ -180,4 +184,5 @@ let g:ctrlp_map = '<leader>t'
 set wildignore+=*/build/**
 " disable caching
 let g:ctrlp_use_caching=0
-
+let g:molokai_original=1
+let g:rehash256 = 1
