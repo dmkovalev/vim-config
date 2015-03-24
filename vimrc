@@ -40,7 +40,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'airblade/vim-rooter.git'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
-
+Plugin 'scrooloose/nerdcommenter'
 " }}}
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -185,12 +185,28 @@ nnoremap <leader>v V`]
 nnoremap <leader>w <C-w>v<C-w>l
 " open .vimrc file
 nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+nnoremap <leader>ez <C-w><C-v><C-l>:e ~/.zshrc<cr>
 nnoremap <leader>sc :SyntasticCheck<CR>
 nnoremap <leader>si :SyntasticInfo<CR>
 nnoremap <leader>sr :SyntasticReset<CR>
 nnoremap <leader>d :NERDTreeToggle<CR>
 nnoremap <F5> :GundoToggle<CR>
 map <F4> :w<CR> :compiler gradle<CR> :make test<CR>:cw 4<CR>
+" Easy buffer navigation
+noremap <leader>bp :bprevious<cr>
+noremap <leader>bn :bnext<cr>
+" Yank content in OS's clipboard. `o` stands for "OS's Clipoard".
+vnoremap <leader>yo "*y
+" Paste content from OS's clipboard
+nnoremap <leader>po "*p
+" Yank from current cursor position to end of line
+map Y y$
+" Source current line
+vnoremap <leader>L y:execute @@<cr>
+" Source visual selection
+nnoremap <leader>L ^vg_y:execute @@<cr>
+" Fast saving and closing current buffer without closing windows displaying the buffer
+nmap <leader>wq :wq<cr>
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 " let g:UltiSnipsJumpBackwardTrigger="<c-z>"
