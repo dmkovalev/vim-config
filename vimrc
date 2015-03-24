@@ -144,9 +144,7 @@ set laststatus=2
 set relativenumber
 set list
 set listchars=tab:▸\ ,eol:¬
-if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
-      set t_Co=256
-endif
+set t_Co=256
 " set t_Co=16
 " set background=dark
 colorscheme molokai
