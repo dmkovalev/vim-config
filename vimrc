@@ -210,7 +210,7 @@ nnoremap <leader>L ^vg_y:execute @@<cr>
 nmap <leader>wq :wq<cr>
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 " Use <leader>t to open ctrlp
 let g:ctrlp_map = '<leader>t'
 " save while losing focus
