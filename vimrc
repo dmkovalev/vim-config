@@ -12,15 +12,13 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 " }}}
-
 " Look plugins {{{
-
 Plugin 'bling/vim-airline'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
 Plugin 'oblitum/rainbow'
-" }}}
 
+" }}}
 " Completion and snippets {{{
 Plugin 'dansomething/vim-eclim'
 Plugin 'Valloric/YouCompleteMe'
@@ -28,13 +26,12 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'Raimondi/delimitMate'
 Plugin 'scrooloose/syntastic'
-" }}}
 
+" }}}
 " External tools {{{
 Plugin 'tpope/vim-fugitive'
 Plugin 'mileszs/ack.vim'
 Plugin 'tfnico/vim-gradle'
-
 " }}}
 " Operations with files and code {{{
 Plugin 'sjl/gundo.vim'
@@ -43,23 +40,37 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'airblade/vim-rooter.git'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
+
 " }}}
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
-"
-" }}}
+" Configuration variables {{{
+let g:airline#extensions#tabline#enabled = 1
+let g:rainbow_active = 1
+let g:EclimCompletionMethod = 'omnifunc'
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+" Ignore these directories
+set wildignore+=*/build/**
+" disable caching
+let g:ctrlp_use_caching=0
+" }}} 
 
+" }}} 
 " White characters {{{
 set modelines=0
-
 "tabstop {{{ - количество пробелов, которыми символ табуляции отображается в тексте. 
 "Оказывает влияние как на уже существующие табуляции, так и на новые. В случае 
 "изменения значения, «на лету» применяется к тексту.}}}
 set tabstop=4
-
 " softtabstop {{{ - количество пробелов, которыми символ табуляции отображается
 " при добавлении.
 " Несмотря на то, что при нажатии на Tab вы получите ожидаемый результат
@@ -96,15 +107,13 @@ set expandtab
 " удаляется перед символом #, если он следует первым в строке и т.д.
 " (подробнее help 'smartindent').}}}
 set smartindent
-
 "------------------handle long lines correctly------------"
 set wrap
 set textwidth=79
 set formatoptions=qrn1
 set colorcolumn=85
 " }}}
-
-" folding {{{
+" Folding {{{
 set foldlevelstart=0
 set foldmethod=syntax
 " Space to toggle folds.
@@ -116,8 +125,9 @@ nnoremap zO zCzO
 " Use ,z to "focus" the current fold.
 nnoremap <leader>z zMzvzz
 " }}}
-
+" Settings {{{
 syntax on
+au FileType vim setlocal foldmethod=marker
 set encoding=utf-8
 set scrolloff=3
 set showmode
@@ -137,7 +147,12 @@ set listchars=tab:▸\ ,eol:¬
 if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
       set t_Co=256
 endif
-
+" set t_Co=16
+" set background=dark
+colorscheme molokai
+let g:molokai_original=1
+let g:rehash256 = 1
+" }}}
 " Navigation & UI {{{
 let mapleader = "," "map leader command to ,
 " remove the usage of arrows
@@ -155,8 +170,6 @@ nnoremap k gk
 vnoremap j gj
 vnoremap k gk
 nnoremap ; :
-
-
 " splitted windows navigation
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -201,27 +214,3 @@ set incsearch
 set showmatch
 set hlsearch
 "}}} 
-
-" set t_Co=16
-" set background=dark
-colorscheme molokai
-
-let g:EclimCompletionMethod = 'omnifunc'
-let g:airline#extensions#tabline#enabled = 1
-
-let g:rainbow_active = 1
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-" Ignore these directories
-set wildignore+=*/build/**
-" disable caching
-let g:ctrlp_use_caching=0
-let g:molokai_original=1
-let g:rehash256 = 1
