@@ -62,7 +62,7 @@ let g:syntastic_check_on_wq = 0
 set wildignore+=*/build/**
 " disable caching
 let g:ctrlp_use_caching=0
-let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets"]
+let g:UltiSnipsSnippetDirectories=["UltiSnips"]
 "}}} 
 
 " }}} 
